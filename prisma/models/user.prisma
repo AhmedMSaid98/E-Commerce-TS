@@ -1,0 +1,19 @@
+model User {
+    id               String             @id @default(cuid())
+    firstName        String
+    lastName         String
+    email            String             @unique
+    password         String
+    role             Role               @default(USER)
+    isVerified       Boolean            @default(false)
+    phone            String?
+    address          Address?
+    image            UserImage[]
+    productImage     ProductImage[]
+    orders           Order[]
+    createdAt        DateTime           @default(now())
+    updatedAt        DateTime           @updatedAt
+    purchasedProduct PurchasedProduct[]
+    token            String?
+    isDeleted        Boolean            @default(false)
+}
